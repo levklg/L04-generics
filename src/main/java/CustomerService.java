@@ -57,7 +57,7 @@ public class CustomerService {
 
 
     public void add(Customer customer, String data) {
-        System.out.println(customer.getName() + " - " + customer.hashCode());
+
       map.put(customer,data);
 
       sizeMap = map.size();
