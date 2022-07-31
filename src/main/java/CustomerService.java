@@ -8,7 +8,7 @@ public class CustomerService {
     //важно подобрать подходящую Map-у, посмотрите на редко используемые методы, они тут полезны
 
    private SortedMap<Customer, String> map = new TreeMap<>();
-
+   private  int sizeMap;
 
     public Map.Entry<Customer, String> getSmallest() {
         //Возможно, чтобы реализовать этот метод, потребуется посмотреть как Map.Entry сделан в jdk
@@ -27,16 +27,40 @@ public class CustomerService {
 
     public Map.Entry<Customer, String> getNext(Customer customer) {
 
+     Map.Entry<Customer, String> nextEntry = null;
+     var scor = customer.getScores();
+     boolean foundNext = false;
 
-        Map.Entry<Customer, String>   nextEntry =    map.entrySet().iterator().next();
-        return nextEntry;
 
-         }
+        for(Map.Entry<Customer, String> entry : map.entrySet()){
+            if( scor < entry.getKey().getScores()){
+                if(!foundNext) {
+                    nextEntry = entry;
+                    foundNext =true;
+                }
+
+            }
+               if(!foundNext) nextEntry = entry;
+
+        }
+
+        sizeMap--;
+
+        if (sizeMap == 0){
+            return null;}
+        else{
+            return nextEntry;
+            }
+
+        }
 
 
 
     public void add(Customer customer, String data) {
-
+        System.out.println(customer.getName() + " - " + customer.hashCode());
       map.put(customer,data);
+
+      sizeMap = map.size();
+
     }
 }

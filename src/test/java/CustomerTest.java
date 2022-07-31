@@ -118,8 +118,16 @@ class CustomerTest {
         customerService.add(new Customer(customer2.getId(), customer2.getName(), customer2.getScores()), "Data2");
         customerService.add(customer3, "Data3");
 
+
+        System.out.println(customer2.getName() + " " + customer2.getClass().hashCode());
+        System.out.println(new Customer(customer2.getId(), customer2.getName(), customer2.getScores()).getName() + " " + customer2.getClass().hashCode());
+
+
+
+
         //when
         Map.Entry<Customer, String> smallestScore = customerService.getSmallest();
+        System.out.println(smallestScore.getKey().getName() + " " + smallestScore.getKey().getClass().hashCode());
         smallestScore.getKey().setName("Vasyl");
 
         //then

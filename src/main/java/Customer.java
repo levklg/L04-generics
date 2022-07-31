@@ -16,7 +16,7 @@ public class Customer implements Comparable<Customer> {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -89,12 +89,6 @@ public class Customer implements Comparable<Customer> {
         result = result * PRIME + (int) ($scores >>> 32 ^ $scores);
         return result;
     }
-
-
-
-
-
-
 
 
 
